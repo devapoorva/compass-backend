@@ -26,3 +26,5 @@ build/
 
 ### VS Code ###
 .vscode/
+target/
+.mvn
