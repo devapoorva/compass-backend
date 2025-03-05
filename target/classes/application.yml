@@ -1,0 +1,206 @@
+#jwt:
+#  secret: '80f_-f3MXO_Bwa5V931Utc~_57lOwsd6Xl'
+
+
+server:
+  port: ${PORT:8080}
+
+---
+spring:
+  profiles:
+    active: local
+    
+---    
+spring:
+  profiles: local
+  datasource:
+    url: jdbc:postgresql://localhost:5432/compass
+    password: compass
+    username: compass
+  tomcat:
+      initial-size: 15
+      max-wait: 30000
+      max-active: 200
+      max-idle: 20
+      min-idle: 15
+      default-auto-commit: true
+  type: org.apache.tomcat.jdbc.pool.DataSource
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+#        id:
+#          new_generator_mappings: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  web:
+    resources:
+      add-mappings: false
+---    
+spring:
+  profiles: dev
+  datasource:
+    url: jdbc:postgresql://10.190.243.41:5432/COMPASUAT
+    password: compasusr_uat
+    username: compasusr
+    tomcat:
+      initial-size: 15
+      max-wait: 30000
+      max-active: 200
+      max-idle: 15
+      min-idle: 8
+      default-auto-commit: true
+    type: org.apache.tomcat.jdbc.pool.DataSource
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+---    
+spring:
+  profiles: uat
+  datasource:
+    url: jdbc:postgresql://10.190.243.41:5432/COMPASUAT
+    password: compasusr_uat
+    username: compasusr
+    tomcat:
+      initial-size: 15
+      max-wait: 30000
+      max-active: 200
+      max-idle: 15
+      min-idle: 8
+      default-auto-commit: true
+    type: org.apache.tomcat.jdbc.pool.DataSource
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+---    
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:postgresql://10.190.243.25:5432/compasprd
+    password: YdAzgwuH6grDg#QgfaUE
+    username: compasmgr
+    tomcat:
+      initial-size: 15
+      max-wait: 30000
+      max-active: 200
+      max-idle: 15
+      min-idle: 8
+      default-auto-commit: true
+    type: org.apache.tomcat.jdbc.pool.DataSource
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+---    
+spring:
+  profiles: prodlocal
+  datasource:
+    url: jdbc:postgresql://10.190.243.25:5432/compasprd
+    password: YdAzgwuH6grDg#QgfaUE
+    username: compasmgr
+    tomcat:
+      initial-size: 15
+      max-wait: 30000
+      max-active: 200
+      max-idle: 15
+      min-idle: 8
+      default-auto-commit: true
+    type: org.apache.tomcat.jdbc.pool.DataSource
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+---    
+spring:
+  profiles: uatusrlocal
+  datasource:
+    url: jdbc:postgresql://10.190.243.41:5432/COMPASUAT
+    password: compasusr_uat
+    username: compasusr
+    tomcat:
+      initial-size: 15
+      max-wait: 30000
+      max-active: 200
+      max-idle: 15
+      min-idle: 8
+      default-auto-commit: true
+    type: org.apache.tomcat.jdbc.pool.DataSource
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
+---    
+spring:
+  profiles: uatmgrlocal
+  datasource:
+    url: jdbc:postgresql://10.190.243.41:5432/COMPASUAT
+    password: compasmgr_uat
+    username: compasmgr
+    tomcat:
+      initial-size: 15
+      max-wait: 30000
+      max-active: 200
+      max-idle: 15
+      min-idle: 8
+      default-auto-commit: true
+    type: org.apache.tomcat.jdbc.pool.DataSource
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  mvc:
+    throw-exception-if-no-handler-found: true
+  web:
+    resources:
+      add-mappings: false
