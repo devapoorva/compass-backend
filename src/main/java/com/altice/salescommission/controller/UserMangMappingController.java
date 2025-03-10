@@ -26,7 +26,7 @@ public class UserMangMappingController {
 	/* This method is used to delete a role */
 	@PutMapping("/assignpagetoroleviews")
 	public ResponseEntity<UserMangMappingEntity> assignPageToRoleViews(@RequestParam("id") int id,
-			@RequestParam("pageid") int pageid,@RequestParam("status") String status,@RequestParam("currentUser") String currentUser,@RequestParam("parentpageid") int parentpageid) throws IOException {
+			@RequestParam("pageid") int pageid,@RequestParam("status") String status,@RequestParam(value = "currentUser",defaultValue = "apoorva") String currentUser,@RequestParam("parentpageid") int parentpageid) throws IOException {
 		UserMangMappingEntity getList = userManagMappingService.assignPageToRoleViews(id, pageid, status,currentUser,parentpageid);
 		return new ResponseEntity<>(getList, OK);
 	}

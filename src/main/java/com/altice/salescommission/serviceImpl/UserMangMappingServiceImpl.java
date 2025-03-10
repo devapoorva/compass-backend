@@ -38,7 +38,7 @@ public class UserMangMappingServiceImpl extends AbstractBaseRepositoryImpl<UserM
 		int cnt = 0;
 		UserMangMappingEntity updateKpiStatusRes = null;
 
-		cnt = userMangMappingRepository.getCountOfMappedRecord(roleid, pageid);
+		cnt = userMangMappingRepository.getCountOfMappedRecord(roleid, pageid,parentpageid);
 
 		logger.info("==================View======================");
 		logger.info("roleid = " + roleid);
@@ -62,7 +62,7 @@ public class UserMangMappingServiceImpl extends AbstractBaseRepositoryImpl<UserM
 
 			Long mapid = Long.valueOf(userMangMappingRepository.getId(roleid, pageid));
 			logger.info("Mpping Rowid = " + mapid);
-			Long mapparentid = Long.valueOf(userMangMappingRepository.getParentId(roleid, parentpageid, parentpageid));
+			Long mapparentid = Long.valueOf(userMangMappingRepository.getParentId(roleid, parentpageid, pageid));
 			logger.info("Mpping Parent Rowid = " + mapparentid);
 
 			UserMangMappingEntity mapStatus = userMangMappingRepository.findById(mapid)
@@ -74,7 +74,7 @@ public class UserMangMappingServiceImpl extends AbstractBaseRepositoryImpl<UserM
 			mapStatus.setUpdated_dt(new Date());
 			updateKpiStatusRes = userMangMappingRepository.save(mapStatus);
 
-			int parentcnt = userMangMappingRepository.getCountOfViewEditAccess(roleid, parentpageid, parentpageid);
+			/*int parentcnt = userMangMappingRepository.getCountOfViewEditAccess(roleid, parentpageid, pageid);
 			logger.info("parentpageid : " + parentpageid);
 			logger.info("parentcnt = " + parentcnt);
 
@@ -91,7 +91,7 @@ public class UserMangMappingServiceImpl extends AbstractBaseRepositoryImpl<UserM
 				updateStatus.setEdit_acc("y");
 			}
 			updateKpiStatusRes = userMangMappingRepository.save(updateStatus);
-			logger.info("updateKpiStatusRes = " + updateKpiStatusRes);
+			logger.info("updateKpiStatusRes = " + updateKpiStatusRes);*/
 		}
 
 		return updateKpiStatusRes;
@@ -104,7 +104,7 @@ public class UserMangMappingServiceImpl extends AbstractBaseRepositoryImpl<UserM
 		int cnt = 0;
 		UserMangMappingEntity updateKpiStatusRes = null;
 
-		cnt = userMangMappingRepository.getCountOfMappedRecord(roleid, pageid);
+		cnt = userMangMappingRepository.getCountOfMappedRecord(roleid, pageid, parentpageid);
 
 		logger.info("==================Edit======================");
 		logger.info("roleid = " + roleid);
@@ -125,7 +125,7 @@ public class UserMangMappingServiceImpl extends AbstractBaseRepositoryImpl<UserM
 							+ currentUser + "','ACTIVE','" + status + "','" + parentpageid + "')");
 		} else {
 			Long mapid = Long.valueOf(userMangMappingRepository.getId(roleid, pageid));
-			Long mapparentid = Long.valueOf(userMangMappingRepository.getParentId(roleid, parentpageid, parentpageid));
+			Long mapparentid = Long.valueOf(userMangMappingRepository.getParentId(roleid, parentpageid, pageid));
 			logger.info("Mapping Parent Rowid = " + mapparentid);
 
 			UserMangMappingEntity mapStatus = userMangMappingRepository.findById(mapid)
@@ -136,7 +136,7 @@ public class UserMangMappingServiceImpl extends AbstractBaseRepositoryImpl<UserM
 			mapStatus.setUpdated_dt(new Date());
 			updateKpiStatusRes = userMangMappingRepository.save(mapStatus);
 
-			int parentcnt = userMangMappingRepository.getCountOfViewEditAccess(roleid, parentpageid, parentpageid);
+			/*int parentcnt = userMangMappingRepository.getCountOfViewEditAccess(roleid, parentpageid, pageid);
 
 			UserMangMappingEntity updateStatus = userMangMappingRepository.findById(Long.valueOf(mapparentid))
 					.orElseThrow(() -> new ResourceNotFoundException("Id not found" + mapparentid));
@@ -147,7 +147,7 @@ public class UserMangMappingServiceImpl extends AbstractBaseRepositoryImpl<UserM
 				updateStatus.setView_acc("y");
 				updateStatus.setEdit_acc("y");
 			}
-			updateKpiStatusRes = userMangMappingRepository.save(updateStatus);
+			updateKpiStatusRes = userMangMappingRepository.save(updateStatus);*/
 		}
 
 		return updateKpiStatusRes;
